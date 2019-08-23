@@ -134,7 +134,8 @@ docker logs geopython-workshop-jupyter
 In that case you can copy/paste the download URL in your browser and download from there.</p>
 <h3 id="filedrive-sharing">File/Drive Sharing</h3>
 <p>The workshop setup involves Docker Volume Mounting.
-For Mac OS and Windows installs be sure to <strong>enable File/Drive Sharing</strong> for the directory where you unzipped the workshop.
+For Mac OS and Windows installs be sure to <strong>enable File/Drive Sharing</strong> within Docker Desktop 
+for the directory where you unzipped the workshop.
 Go to the <code>Preferences/Settings | File Sharing...</code>  menu and make settings accordingly. </p>
 <h3 id="running-in-virtualbox">Running in VirtualBox</h3>
 <p>You may also run a VirtualBox VM with preferably Ubuntu, install Docker there and run the workshop. Even better if
@@ -143,10 +144,18 @@ on your local machine and mount it within the VM, start the workshop there. </p>
 <p>In any case, in order to access the services from your local machine, you need to do port mapping from
 ports within the VM to your local machine in order to access the workshop from your local browser.
 The following ports need to be mapped from the VirtualBox VM to your local system:
- <strong>8888 (Jupyter)</strong>, <strong>5000 (pygeoapi)</strong> and <strong>8001 (pycsw)</strong></p>
+ <strong>8888 (Jupyter)</strong>, <strong>5000 (pygeoapi)</strong> and <strong>8001 (pycsw)</strong> .</p>
+<p>You will possibly need to enable firewall access for these ports within your VM. Do this as follows:</p>
+<pre><code>sudo ufw allow 8888/tcp
+sudo ufw allow 5000/tcp
+sudo ufw allow 8001/tcp
+</code></pre>
+
+<p>Within VirtualBox menu you can then map these ports to the same ports on your local system, so the workshop
+is accessed with your local browser via http://127.0.0.1:8888?token=..., http://127.0.0.1:5000 etc.</p>
 <h3 id="cannot-access-url">Cannot Access URL</h3>
-<p>The workshop should run on http://127.0.0.1:8888?token=<token> but in some cases this may not work.
-In that case you could also try http://0.0.0.0:8888?token=<token>.</p>
+<p>The workshop should run on http://127.0.0.1:8888?token="token" but in some cases this may not work.
+In that case you could also try http://0.0.0.0:8888?token="token".</p>
 <h2 id="no-docker-installed">No Docker Installed?</h2>
 <p>If you somehow were not able to install Docker: 
 there is a Cloud version of the Jupyter-Notebook-part of the workshop via "Jupyter Binder".</p>
@@ -223,5 +232,5 @@ discussion and live support from the developers of the workshop.</p>
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-08-23 14:44:56
+Build Date UTC : 2019-08-23 14:58:17
 -->
