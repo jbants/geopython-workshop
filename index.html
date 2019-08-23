@@ -62,7 +62,8 @@
             <li><a href="#data">Data</a></li>
             <li><a href="#verifying-your-environment">Verifying your environment</a></li>
             <li><a href="#installation">Installation</a></li>
-            <li><a href="#installation-failures">Installation Failures</a></li>
+            <li><a href="#installation-issues">Installation Issues</a></li>
+            <li><a href="#no-docker-installed">No Docker Installed?</a></li>
             <li><a href="#support">Support</a></li>
     </ul>
 </div></div>
@@ -126,12 +127,38 @@ docker logs geopython-workshop-jupyter
 # look for URL+Token and Copy/Paste in browser
 </code></pre>
 
-<h2 id="installation-failures">Installation Failures</h2>
-<p>Still installation failures or no Docker installed? With some limits you may follow most of the workshop via a remote "Binder" instance.</p>
-<p>As a last resort and with some limits (e.g. no local geo-services, no data publication), 
-you may follow most of the workshop using a remote Docker instance within your browser via "Jupyter Binder". Click on the button below
-to launch the Workshop Binder Instance. Be patient for the startup.</p>
+<h2 id="installation-issues">Installation Issues</h2>
+<p>Docker installed but problems installing/running the workshop? Below some tips:</p>
+<h3 id="download-problems">Download Problems</h3>
+<p>Although <code>curl</code> may be on your system it may have problems with SSL (one user noted using OSGeo4W).
+In that case you can copy/paste the download URL in your browser and download from there.</p>
+<h3 id="filedrive-sharing">File/Drive Sharing</h3>
+<p>The workshop setup involves Docker Volume Mounting.
+For Mac OS and Windows installs be sure to <strong>enable File/Drive Sharing</strong> for the directory where you unzipped the workshop.
+Go to the <code>Preferences/Settings | File Sharing...</code>  menu and make settings accordingly. </p>
+<h3 id="running-in-virtualbox">Running in VirtualBox</h3>
+<p>You may also run a VirtualBox VM with preferably Ubuntu, install Docker there and run the workshop. Even better if
+you use <a href="https://www.vagrantup.com">Vagrant</a> to provision/manage your VM. You could even unpack the .zip file
+on your local machine and mount it within the VM, start the workshop there. </p>
+<p>In any case, in order to access the services from your local machine, you need to do port mapping from
+ports within the VM to your local machine in order to access the workshop from your local browser.
+The following ports need to be mapped from the VirtualBox VM to your local system:
+ <strong>8888 (Jupyter)</strong>, <strong>5000 (pygeoapi)</strong> and <strong>8001 (pycsw)</strong></p>
+<h3 id="cannot-access-url">Cannot Access URL</h3>
+<p>The workshop should run on http://127.0.0.1:8888?token=<token> but in some cases this may not work.
+In that case you could also try http://0.0.0.0:8888?token=<token>.</p>
+<h2 id="no-docker-installed">No Docker Installed?</h2>
+<p>If you somehow were not able to install Docker: 
+there is a Cloud version of the Jupyter-Notebook-part of the workshop via "Jupyter Binder".</p>
+<p>With some limits (e.g. no local geo-services, no data publication), 
+you may follow most of the workshop using a remote Docker instance within your 
+browser via "Jupyter Binder". Click on the button below
+to launch the Workshop Binder Instance. Startup takes a while, be patient...</p>
 <p><a href="https://mybinder.org/v2/gh/geopython/geopython-workshop/master?filepath=workshop%2Fjupyter%2Fcontent%2Fnotebooks%2F01-introduction.ipynb"><img alt="Binder" src="https://mybinder.org/badge_logo.svg" /></a></p>
+<p>Additional notes for Binder session:</p>
+<ul>
+<li>session timeout is about 10 mins, if that happens, refreshing the page will not help, you need to start a new session using the button above</li>
+</ul>
 <h2 id="support">Support</h2>
 <p>A <a href="https://gitter.im/geopython/geopython-workshop">Gitter</a> channel exists for
 discussion and live support from the developers of the workshop.</p>
@@ -196,5 +223,5 @@ discussion and live support from the developers of the workshop.</p>
 
 <!--
 MkDocs version : 1.0.4
-Build Date UTC : 2019-08-19 12:03:52
+Build Date UTC : 2019-08-23 14:44:56
 -->
